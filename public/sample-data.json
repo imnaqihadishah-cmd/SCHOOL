@@ -1,0 +1,64 @@
+
+{
+    "settings": {
+        "name": "My Awesome School",
+        "address": "123 Main Street, Anytown",
+        "logo": ""
+    },
+    "students": [
+        {
+            "id": "id_1",
+            "photo": "",
+            "name": "Alice Johnson",
+            "father": "John Johnson",
+            "class": "Class 5",
+            "roll": "C5-001",
+            "contact": "923001234567",
+            "date": "2023-01-15",
+            "address": "456 Oak Avenue",
+            "admFee": "5000",
+            "feeStatus": "Paid",
+            "monthlyFee": "2000"
+        },
+        {
+            "id": "id_2",
+            "photo": "",
+            "name": "Bob Williams",
+            "father": "William Williams",
+            "class": "Class 8",
+            "roll": "C8-001",
+            "contact": "923012345678",
+            "date": "2022-08-20",
+            "address": "789 Pine Street",
+            "admFee": "6000",
+            "feeStatus": "Paid",
+            "monthlyFee": "2500"
+        }
+    ],
+    "teachers": [
+        {
+            "id": "id_t1",
+            "photo": "",
+            "name": "Charles Davis",
+            "education": "M.Sc. Physics",
+            "subject": "Physics",
+            "contact": "923023456789",
+            "salary": 50000
+        }
+    ],
+    "fees": [
+        {
+            "id": "id_f1",
+            "studentId": "id_2",
+            "amount": 2500,
+            "type": "February 2024 Monthly Fee",
+            "date": "2024-02-05"
+        }
+    ],
+    "results": [],
+    "attendance": {
+        "students": {},
+        "teachers": {}
+    },
+    "holidays": []
+}
