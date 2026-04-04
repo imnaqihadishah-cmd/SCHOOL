@@ -1,429 +1,557 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50e3c2;
+    --background-color: #f9fafb;
+    --sidebar-bg: #2c3e50;
+    --sidebar-text: #ecf0f1;
+    --sidebar-active: #3498db;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
-    padding: 0;
     display: flex;
-    background-color: #f8f9fa;
 }
 
 .sidebar {
-    width: 220px;
-    background-color: #1f2937;
-    color: white;
+    width: 250px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
     height: 100vh;
+    position: fixed;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
 .sidebar header {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #4b5563;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #34495e;
 }
 
-.sidebar header img {
-    margin-right: 1rem;
+#sidebar-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: none;
+    object-fit: cover;
+}
+
+#sidebar-school-name {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.sidebar nav {
+    flex-grow: 1;
+    padding-top: 20px;
 }
 
 .sidebar nav a {
     display: block;
-    padding: 0.75rem 1.5rem;
+    color: var(--sidebar-text);
     text-decoration: none;
-    color: #d1d5db;
-    margin-bottom: 0.5rem;
+    padding: 15px 20px;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-.sidebar nav a:hover, .sidebar nav a.active {
-    background-color: #06b6d4;
+.sidebar nav a i {
+    margin-right: 12px;
+}
+
+.sidebar nav a:hover {
+    background: var(--sidebar-active);
+}
+
+.sidebar nav a.active {
+    background: var(--primary-color);
     color: white;
 }
 
 .main-content {
+    margin-left: 250px;
     flex-grow: 1;
-    padding: 2rem;
+    padding: 30px;
 }
 
-#dashboard-content {
+main > section {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+main > section h2 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 2em;
+    color: var(--primary-color);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    gap: 25px;
 }
 
 .card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--primary-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card i {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
 .card h3 {
-    margin-top: 0;
-    color: #0e7490;
+    margin: 0 0 10px 0;
+    font-size: 1.4em;
+    color: #555;
 }
 
-section {
-    margin-bottom: 1rem;
+.card p {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-th, td {
-    border: 1px solid #ccc;
-    padding: 0.5rem;
+table th, table td {
+    padding: 15px;
+    border: 1px solid var(--border-color);
     text-align: left;
 }
 
-.student-image, .teacher-image {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
+table th {
+    background-color: #f2f7fc;
+    font-weight: 700;
+    color: #555;
+}
+
+.table-image {
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
-form {
-    margin-top: 1rem;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    border-radius: 5px;
-}
-
-form h3 {
-    margin-top: 0;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-}
-
-form input {
-    width: 95%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-form button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #06b6d4;
-    color: white;
+.btn {
+    padding: 10px 18px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-}
-
-.tabs {
-    overflow: hidden;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 1rem;
-}
-
-.tablink {
-    background-color: #f1f1f1;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 0.75rem 1.5rem;
-    transition: 0.3s;
-}
-
-.tablink:hover {
-    background-color: #ddd;
-}
-
-.tablink.active {
-    background-color: #06b6d4;
     color: white;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s;
 }
 
-.tabcontent {
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-top: none;
-    border-radius: 0 0 5px 5px;
+.btn-primary {
+    background-color: var(--primary-color);
+}
+.btn-primary:hover { background-color: #3a7ac8; }
+
+.btn-warning {
+    background-color: #f39c12;
+}
+.btn-warning:hover { background-color: #d8890b; }
+
+.btn-danger {
+    background-color: #e74c3c;
+}
+.btn-danger:hover { background-color: #c0392b; }
+
+.btn-info {
+    background-color: #3498db;
+}
+.btn-info:hover { background-color: #2980b9; }
+
+.btn-success {
+    background-color: #2ecc71;
+}
+.btn-success:hover { background-color: #27ae60; }
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.9em;
 }
 
-/* Modal styles */
 .modal {
     display: none; 
     position: fixed; 
-    z-index: 1000; 
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     overflow: auto; 
-    background-color: rgba(0,0,0,0.6); 
-    padding-top: 50px;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
-    max-width: 600px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    position: relative;
+    padding: 0;
+    border: none;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 15px 25px;
+    border-bottom: 1px solid #e0e0e0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
 }
 
 .close-button {
     color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 20px;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
     cursor: pointer;
 }
 
-/* ID Card styles */
-#id-card-container {
-    padding: 20px;
+#student-form {
+    padding: 25px;
 }
 
-#id-card {
-    width: 3.375in;
-    height: 2.125in;
-    padding: 15px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
-    margin: 0 auto; /* Center the ID card */
+.profile-pic-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 25px;
 }
 
-.id-card-header {
+#profile-pic-preview {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #f0f0f0;
+}
+
+#student-image {
+    display: none;
+}
+
+.upload-label {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
-    text-align: left;
-    border-bottom: 2px solid #0e7490;
-    padding-bottom: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.form-grid-new {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-field input, .form-field select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 25px;
+}
+
+.student-view-content {
+    padding: 25px;
+}
+
+.student-view-profile {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.student-view-profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f0f0f0;
     margin-bottom: 10px;
 }
 
-.id-card-header img {
-    width: 40px;
-    height: 40px;
+.student-view-profile h3 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.student-view-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.detail-item {
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.detail-item span {
+    font-weight: 600;
+    color: #555;
     margin-right: 10px;
 }
 
-.id-card-header h4 {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: #0e7490;
+.tabs {
+    overflow: hidden;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 20px;
 }
 
-.id-card-body {
+.tablink {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    transition: 0.3s;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.tablink:hover {
+    background-color: #f2f7fc;
+}
+
+.tablink.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 6px 6px 0 0;
+}
+
+.tabcontent {
+    padding: 0;
+}
+
+.attendance-filters {
     display: flex;
-    align-items: flex-start;
-}
-
-.id-card-student-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    margin-right: 15px;
-}
-
-.id-card-details p {
-    margin: 0 0 5px 0;
-    font-size: 11px;
-}
-
-#print-id-card {
-    display: block;
-    margin: 20px auto 0;
-}
-
-/* Attendance Styles */
-.attendance-header {
-    margin-bottom: 1rem;
-    display: flex;
-    gap: 1rem;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
 .present-indicator {
-    color: green;
+    color: #2ecc71;
     font-weight: bold;
 }
 
 .absent-indicator {
-    color: red;
+    color: #e74c3c;
     font-weight: bold;
 }
 
-.present-btn, .absent-btn {
-    margin-right: 5px;
-}
-
-.present-btn {
-    background-color: #28a745; /* Green */
-}
-
-.absent-btn {
-    background-color: #dc3545; /* Red */
-}
-
-.edit-student-btn {
-    background-color: #ffc107; /* Yellow */
-    color: black;
-    margin-left: 5px;
-}
-
-/* Result Card Styles */
-#result-card {
-    border: 2px solid #0e7490;
-    padding: 20px;
-    font-family: sans-serif;
-}
-
-.result-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #0e7490;
-    padding-bottom: 10px;
-}
-
-.result-card-header h4, .result-card-header h5 {
-    margin: 0;
-    color: #0e7490;
-}
-
-.result-card-student-details {
-    margin-bottom: 20px;
+.examination-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 25px;
 }
 
-.detail-row {
-    display: flex;
+#result-card, #teacher-id-card {
+    padding: 20px;
+    border: 1px solid var(--border-color);
 }
 
-.detail-label {
-    font-weight: bold;
-    margin-right: 10px;
+.result-card-content { padding: 25px; }
+
+.result-card-header-new {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed var(--primary-color);
 }
 
-.result-card-marks-table {
+.result-card-header-new img { width: 90px; margin-bottom: 10px; }
+.result-card-header-new h4 { font-size: 1.8em; margin: 0; color: #333; }
+.result-card-header-new h5 { font-size: 1.2em; margin: 5px 0 0; color: #555; }
+
+.result-card-student-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.result-card-student-info div { font-size: 1.1em; }
+
+.result-card-marks-table-new {
     width: 100%;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-color);
+}
+.result-card-marks-table-new th, .result-card-marks-table-new td { text-align: center; }
+
+.result-card-summary-new {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.result-card-summary-new div { margin-bottom: 10px; }
+
+
+#id-card, #teacher-id-card {
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.id-card-header {
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 15px;
     margin-bottom: 20px;
 }
 
-.result-card-marks-table th, .result-card-marks-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+.id-logo {
+    width: 60px;
+    margin-bottom: 10px;
 }
 
-.result-card-summary {
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 1px solid #ddd;
+.id-card-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
 }
 
-.result-card-summary p {
-    font-weight: bold;
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
+.id-card-header span {
+    font-size: 0.9em;
+    color: #555;
 }
 
-#print-result-card {
-    display: block;
-    margin: 20px auto 0;
-}
-
-/* Balance Sheet Styles */
-#balance-sheet-report {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.balance-sheet-header {
+.id-card-main {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    border-bottom: 2px solid #0e7490;
-    padding-bottom: 10px;
 }
 
-.balance-sheet-header img {
-    margin-right: 15px;
+.student-photo {
+    width: 120px;
+    height: 120px;
+    border: 4px solid white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-right: 20px;
 }
 
-.balance-sheet-table {
-    margin-bottom: 20px;
+.id-card-info {
+    flex-grow: 1;
 }
 
-.balance-sheet-summary {
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 2px solid #0e7490;
-}
-
-.summary-row {
+.info-field {
     display: flex;
-    justify-content: space-between;
-    font-size: 1.1em;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-.net-balance span {
+.field-label {
+    font-weight: 600;
+    color: #555;
+    width: 120px;
+}
+
+.field-value {
+    color: #333;
+}
+
+.id-card-footer {
+    text-align: center;
+    border-top: 2px solid #ddd;
+    padding-top: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.paid-indicator {
+    color: #2ecc71;
     font-weight: bold;
-    color: #0e7490;
 }
 
-#print-balance-sheet {
-    display: block;
-    margin: 20px auto 0;
+.unpaid-indicator {
+    color: #e74c3c;
+    font-weight: bold;
 }
-
-
-@media print {
-    body, .modal {
-        background-color: #fff;
-    }
-    .modal-content {
-        box-shadow: none;
-        border: none;
-        width: 100%;
-        max-width: 100%;
-    }
-    .sidebar, .main-content > main > h2, form, .tabs, #print-balance-sheet, #print-id-card, #print-result-card, .edit-student-btn, .id-card-btn, .view-result-btn {
-        display: none;
-    }
-    body * {
-        visibility: hidden;
-    }
-    #balance-sheet-container, #balance-sheet-container *,
-    #id-card-container, #id-card-container *,
-    #result-card-container, #result-card-container * {
-        visibility: visible;
-    }
-    #balance-sheet-container, #id-card-container, #result-card-container {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-    }
+.modal-footer {
+    padding: 15px 25px;
+    text-align: right;
+    border-top: 1px solid #e0e0e0;
 }

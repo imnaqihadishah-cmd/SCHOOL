@@ -6,278 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Management System</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="sidebar">
         <header>
-            <img src="/Logo.png" alt="School Logo" width="50" id="sidebar-logo">
+            <img src="/Logo.png" alt="School Logo" id="sidebar-logo">
             <h3 id="sidebar-school-name">NATIONAL MODEL SCHOOL</h3>
         </header>
         <nav>
-            <a href="#dashboard" class="active">Dashboard</a>
-            <a href="#students">Students</a>
-            <a href="#teachers">Teachers</a>
-            <a href="#accounts">Accounts</a>
-            <a href="#attendance">Attendance</a>
-            <a href="#examination">Examination</a>
-            <a href="#settings">Settings</a>
+            <a href="#dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="#students"><i class="fas fa-user-graduate"></i> Students</a>
+            <a href="#teachers"><i class="fas fa-chalkboard-teacher"></i> Teachers</a>
+            <a href="#accounts"><i class="fas fa-file-invoice-dollar"></i> Accounts</a>
+            <a href="#attendance"><i class="fas fa-calendar-check"></i> Attendance</a>
+            <a href="#examination"><i class="fas fa-clipboard-list"></i> Examination</a>
         </nav>
     </div>
     <div class="main-content">
         <main>
             <section id="dashboard">
-                <h2>Welcome to your Dashboard</h2>
-                <div id="dashboard-content"></div>
             </section>
             <section id="students" style="display: none;">
-                <h2>Students</h2>
-                <div id="students-content"></div>
-                <form id="add-student-form">
-                    <h3>Add New Student</h3>
-                    <div class="form-grid">
-                        <input type="text" id="student-name" placeholder="Name" required>
-                        <input type="text" id="student-class" placeholder="Class" required>
-                        <input type="text" id="student-roll" placeholder="Roll Number" required>
-                        <input type="text" id="student-father" placeholder="Father's Name" required>
-                        <input type="text" id="student-contact" placeholder="Contact Number" required>
-                        <input type="text" id="student-address" placeholder="Address" required>
-                        <input type="file" id="student-image" accept="image/*">
-                    </div>
-                    <button type="submit">Add Student</button>
-                </form>
             </section>
             <section id="teachers" style="display: none;">
-                <h2>Teachers</h2>
-                <div id="teachers-content"></div>
-                <form id="add-teacher-form">
-                    <h3>Add New Teacher</h3>
-                    <div class="form-grid">
-                        <input type="text" id="teacher-name" placeholder="Name" required>
-                        <input type="text" id="teacher-subject" placeholder="Subject" required>
-                        <input type="text" id="teacher-contact" placeholder="Contact Number" required>
-                        <input type="file" id="teacher-image" accept="image/*">
-                         <input type="text" id="teacher-address" placeholder="Address" required>
-                    </div>
-                    <button type="submit">Add Teacher</button>
-                </form>
             </section>
             <section id="accounts" style="display: none;">
-                <h2>Accounts</h2>
-                <div class="tabs">
-                    <button class="tablink active" onclick="openTab(event, 'fees')">Fee Management</button>
-                    <button class="tablink" onclick="openTab(event, 'expenses')">Expense Tracking</button>
-                    <button class="tablink" onclick="openTab(event, 'salaries')">Salary Management</button>
-                    <button class="tablink" onclick="openTab(event, 'balance')">Balance Sheet</button>
-                </div>
-
-                <div id="fees" class="tabcontent">
-                    <h3>Fee Management</h3>
-                    <div id="fees-content"></div>
-                    <form id="add-fee-form">
-                        <h4>Record Fee Payment</h4>
-                        <div class="form-grid">
-                            <input type="text" id="fee-student-roll" placeholder="Student Roll No." required>
-                            <input type="number" id="fee-amount" placeholder="Amount" required>
-                            <input type="date" id="fee-date" required>
-                        </div>
-                        <button type="submit">Record Payment</button>
-                    </form>
-                </div>
-
-                <div id="expenses" class="tabcontent" style="display:none">
-                    <h3>Expense Tracking</h3>
-                    <div id="expenses-content"></div>
-                    <form id="add-expense-form">
-                        <h4>Add New Expense</h4>
-                        <div class="form-grid">
-                            <input type="text" id="expense-description" placeholder="Description" required>
-                            <input type="number" id="expense-amount" placeholder="Amount" required>
-                            <input type="date" id="expense-date" required>
-                        </div>
-                        <button type="submit">Add Expense</button>
-                    </form>
-                </div>
-
-                <div id="salaries" class="tabcontent" style="display:none">
-                    <h3>Salary Management</h3>
-                    <div id="salaries-content"></div>
-                    <form id="add-salary-form">
-                        <h4>Record Salary Payment</h4>
-                        <div class="form-grid">
-                            <input type="text" id="salary-teacher-id" placeholder="Teacher ID" required>
-                            <input type="number" id="salary-amount" placeholder="Amount" required>
-                            <input type="date" id="salary-date" required>
-                        </div>
-                        <button type="submit">Record Payment</button>
-                    </form>
-                </div>
-
-                <div id="balance" class="tabcontent" style="display:none">
-                    <h3>Balance Sheet</h3>
-                    <div id="balance-sheet-container"></div>
-                    <button id="print-balance-sheet">Print Balance Sheet</button>
-                </div>
             </section>
             <section id="attendance" style="display: none;">
-                <h2>Attendance</h2>
-                <div class="attendance-header">
-                    <input type="date" id="attendance-date">
-                    <select id="attendance-class-filter"></select>
-                </div>
-                <div id="attendance-content"></div>
             </section>
             <section id="examination" style="display: none;">
-                <h2>Examination</h2>
-                <div class="tabs">
-                    <button class="tablink active" onclick="openTab(event, 'results')">Results</button>
-                </div>
-                <div id="results" class="tabcontent">
-                    <h3>Create Result Card</h3>
-                    <form id="add-result-form">
-                        <div class="form-grid">
-                            <input type="text" id="result-student-roll" placeholder="Student Roll No." required>
-                            <input type="text" id="result-student-name" placeholder="Student Name" >
-                            <input type="text" id="result-student-father" placeholder="Father's Name" >
-                            <input type="text" id="result-exam-name" placeholder="Examination Name" required>
-                            <input type="number" id="result-marks-english" placeholder="English Marks" required>
-                            <input type="number" id="result-marks-math" placeholder="Math Marks" required>
-                            <input type="number" id="result-marks-science" placeholder="Science Marks" required>
-                            <input type="number" id="result-marks-urdu" placeholder="Urdu Marks" required>
-                            <input type="number" id="result-marks-islamiyat" placeholder="Islamiyat Marks" required>
-                        </div>
-                        <button type="submit">Generate Result Card</button>
-                    </form>
-                    <div id="results-content"></div>
-                </div>
-            </section>
-             <section id="settings" style="display: none;">
-                <h2>Settings</h2>
-                <form id="settings-form">
-                    <h3>Update School Information</h3>
-                    <div class="form-grid">
-                        <input type="text" id="school-name" placeholder="School Name" required>
-                        <input type="text" id="school-address" placeholder="School Address" required>
-                        <input type="file" id="school-logo" accept="image/*">
-                    </div>
-                    <button type="submit">Save Settings</button>
-                </form>
             </section>
         </main>
     </div>
-    <div id="id-card-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div id="id-card-container"></div>
-            <button id="print-id-card">Print ID Card</button>
-        </div>
-    </div>
 
-    <div id="edit-student-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h3>Edit Student Details</h3>
-            <form id="edit-student-form">
-                <input type="hidden" id="edit-student-index">
-                <div class="form-grid">
-                    <input type="text" id="edit-student-name" placeholder="Name" required>
-                    <input type="text" id="edit-student-class" placeholder="Class" required>
-                    <input type="text" id="edit-student-roll" placeholder="Roll Number" required>
-                    <input type="text" id="edit-student-father" placeholder="Father's Name" required>
-                    <input type="text" id="edit-student-contact" placeholder="Contact Number" required>
-                    <input type="text" id="edit-student-address" placeholder="Address" required>
-                    <input type="file" id="edit-student-image" accept="image/*">
-                </div>
-                <button type="submit">Save Changes</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="result-card-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div id="result-card-container"></div>
-            <button id="print-result-card">Print Result Card</button>
-        </div>
-    </div>
+    <div id="modal-container"></div>
 
     <script>
-        let db = {
-    "settings": {
-        "name": "My Awesome School",
-        "address": "123 Main Street, Anytown",
-        "logo": ""
-    },
-    "students": [
-        {
-            "id": "id_1",
-            "photo": "",
-            "name": "Alice Johnson",
-            "father": "John Johnson",
-            "class": "Class 5",
-            "roll": "C5-001",
-            "contact": "923001234567",
-            "date": "2023-01-15",
-            "address": "456 Oak Avenue",
-            "admFee": "5000",
-            "feeStatus": "Paid",
-            "monthlyFee": "2000"
-        },
-        {
-            "id": "id_2",
-            "photo": "",
-            "name": "Bob Williams",
-            "father": "William Williams",
-            "class": "Class 8",
-            "roll": "C8-001",
-            "contact": "923012345678",
-            "date": "2022-08-20",
-            "address": "789 Pine Street",
-            "admFee": "6000",
-            "feeStatus": "Paid",
-            "monthlyFee": "2500"
+        let db;
+
+        function loadData() {
+            return fetch('/database.json')
+                .then(response => response.json())
+                .then(data => {
+                    db = data;
+                    localStorage.setItem('schoolDB', JSON.stringify(db));
+                });
         }
-    ],
-    "teachers": [
-        {
-            "id": "id_t1",
-            "photo": "",
-            "name": "Charles Davis",
-            "education": "M.Sc. Physics",
-            "subject": "Physics",
-            "contact": "923023456789",
-            "salary": 50000
-        }
-    ],
-    "fees": [
-        {
-            "id": "id_f1",
-            "studentId": "id_2",
-            "amount": 2500,
-            "type": "February 2024 Monthly Fee",
-            "date": "2024-02-05"
-        }
-    ],
-    "results": [],
-    "attendance": {
-        "students": {},
-        "teachers": {}
-    },
-    "holidays": []
-};
 
         function saveData() {
-            localStorage.setItem('schoolDB', JSON.stringify(db));
-            applySettings();
+            return fetch('/update-database', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(db),
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                localStorage.setItem('schoolDB', JSON.stringify(db));
+                renderContent(window.location.hash || '#dashboard');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        function navigate(hash) {
+            document.querySelectorAll('main > section').forEach(s => s.style.display = 'none');
+            const section = document.querySelector(hash);
+            if (section) {
+                section.style.display = 'block';
+                renderContent(hash);
+            }
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            const activeLink = document.querySelector('nav a[href="' + hash + '"]');
+            if(activeLink){
+                activeLink.classList.add('active');
+            }
         }
         
-        function applySettings() {
-            document.getElementById('sidebar-school-name').textContent = db.settings.name;
-            const logoUrl = db.settings.logo || '/Logo.png';
-            document.getElementById('sidebar-logo').src = logoUrl;
-        }
-
-
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -291,148 +101,821 @@
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
         }
-
-
-        function navigate(hash) {
-            document.querySelectorAll('main > section').forEach(s => s.style.display = 'none');
-            const section = document.querySelector(hash);
-            if (section) {
-                section.style.display = 'block';
-            }
-            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-            const activeLink = document.querySelector(`nav a[href="${hash}"]`);
-            if(activeLink){
-                activeLink.classList.add('active');
+        
+        function renderContent(hash) {
+            switch(hash) {
+                case '#dashboard':
+                    renderDashboard();
+                    break;
+                case '#students':
+                    renderStudents();
+                    break;
+                case '#teachers':
+                    renderTeachers();
+                    break;
+                case '#accounts':
+                    renderAccounts();
+                    break;
+                case '#attendance':
+                    renderAttendance();
+                    break;
+                case '#examination':
+                    renderExamination();
+                    break;
             }
         }
 
-        window.addEventListener('hashchange', () => navigate(window.location.hash));
-
         function renderDashboard() {
-            const dashboardContent = document.getElementById('dashboard-content');
-            const totalFees = db.fees.reduce((sum, fee) => sum + fee.amount, 0);
-            const totalExpenses = db.expenditures.reduce((sum, exp) => sum + exp.amount, 0);
-            const totalSalaries = db.salaries.reduce((sum, sal) => sum + sal.amount, 0);
+            const dashboardContent = document.getElementById('dashboard');
+            const totalFees = (db.fees || []).reduce((sum, fee) => sum + fee.amount, 0);
+            const totalExpenses = (db.expenditures || []).reduce((sum, exp) => sum + exp.amount, 0);
+            const totalSalaries = (db.salaries || []).reduce((sum, sal) => sum + sal.amount, 0);
 
             dashboardContent.innerHTML = `
-                <div class="card">
-                    <h3>Total Students</h3>
-                    <p>${db.students.length}</p>
-                </div>
-                <div class="card">
-                    <h3>Total Teachers</h3>
-                    <p>${db.teachers.length}</p>
-                </div>
-                <div class="card">
-                    <h3>Total Fees Collected</h3>
-                    <p>Rs. ${totalFees}</p>
-                </div>
-                <div class="card">
-                    <h3>Total Expenses</h3>
-                    <p>Rs. ${totalExpenses + totalSalaries}</p>
+                <h2>Welcome to your Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>Total Students</h3>
+                        <p>${(db.students || []).length}</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>Total Teachers</h3>
+                        <p>${(db.teachers || []).length}</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3>Total Fees Collected</h3>
+                        <p>Rs. ${totalFees}</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Total Expenses</h3>
+                        <p>Rs. ${totalExpenses + totalSalaries}</p>
+                    </div>
                 </div>
             `;
         }
 
         function renderStudents() {
-            const studentsContent = document.getElementById('students-content');
-            let html = '<table><thead><tr><th>Image</th><th>Name</th><th>Class</th><th>Roll No.</th><th>Father</th><th>Contact</th><th>Address</th><th>Action</th></tr></thead><tbody>';
-            for (const [index, student] of db.students.entries()) {
-                const imageSrc = student.image ? `<img src="${student.image}" alt="${student.name}" class="student-image">` : 'No Image';
-                html += `<tr><td>${imageSrc}</td><td>${student.name}</td><td>${student.class}</td><td>${student.roll}</td><td>${student.father}</td><td>${student.contact}</td><td>${student.address}</td><td><button class="id-card-btn" data-index="${index}">ID Card</button><button class="edit-student-btn" data-index="${index}">Edit</button></td></tr>`;
+    const studentsContent = document.getElementById('students');
+    let tableHtml = `
+        <div class="section-header">
+            <h2>Students</h2>
+            <button id="add-student-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Student</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Roll No.</th>
+                    <th>Father</th>
+                    <th>Contact</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>`;
+
+    for (const [index, student] of (db.students || []).entries()) {
+        const imageSrc = student.image ? `<img src="${student.image}" alt="${student.name}" class="table-image">` : 'No Image';
+        tableHtml += `
+            <tr>
+                <td>${imageSrc}</td>
+                <td>${student.name}</td>
+                <td>${student.class}</td>
+                <td>${student.roll}</td>
+                <td>${student.father}</td>
+                <td>${student.contact}</td>
+                <td>
+                    <button class="btn btn-sm btn-info view-student-btn" data-index="${index}"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-sm btn-warning edit-student-btn" data-index="${index}"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger delete-student-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>`;
+    }
+
+    tableHtml += '</tbody></table>';
+    studentsContent.innerHTML = tableHtml;
+
+    document.getElementById('add-student-btn').addEventListener('click', () => openStudentModal());
+    document.querySelectorAll('.edit-student-btn').forEach(btn => btn.addEventListener('click', (e) => openStudentModal(e.currentTarget.dataset.index)));
+    document.querySelectorAll('.delete-student-btn').forEach(btn => btn.addEventListener('click', (e) => deleteStudent(e.currentTarget.dataset.index)));
+    document.querySelectorAll('.view-student-btn').forEach(btn => btn.addEventListener('click', (e) => openStudentViewModal(e.currentTarget.dataset.index)));
+}
+
+function openStudentModal(index) {
+    const modalContainer = document.getElementById('modal-container');
+    const student = index !== undefined ? db.students[index] : {};
+    const modalHtml = `
+        <div class="modal" id="student-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-user-plus"></i> ${index !== undefined ? 'Edit' : 'Add'} Student</h3>
+                    <span class="close-button">&times;</span>
+                </div>
+                <form id="student-form">
+                    <input type="hidden" id="student-index" value="${index || ''}">
+                    <div class="profile-pic-container">
+                        <img id="profile-pic-preview" src="${student.image || 'https://via.placeholder.com/150'}" alt="Profile Picture">
+                        <input type="file" id="student-image" accept="image/*">
+                        <label for="student-image" class="upload-label"><i class="fas fa-camera"></i></label>
+                    </div>
+                    <div class="form-grid-new">
+                        <div class="form-field">
+                            <label for="student-name">Full Name *</label>
+                            <input type="text" id="student-name" placeholder="Full Name" value="${student.name || ''}" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="student-father">Father's Name</label>
+                            <input type="text" id="student-father" placeholder="Father's Name" value="${student.father || ''}">
+                        </div>
+                        <div class="form-field">
+                            <label for="student-class">Class *</label>
+                            <select id="student-class" required>
+                                <option value="">Select Class</option>
+                                ${[...Array(10).keys()].map(i => `<option value="${i+1}" ${student.class == (i+1) ? 'selected' : ''}>Class ${i+1}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="student-roll">Roll Number (Auto) *</label>
+                            <input type="text" id="student-roll" placeholder="Select Class First" value="${student.roll || ''}" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="student-admission-date">Admission Date</label>
+                            <input type="date" id="student-admission-date" value="${student.admissionDate || new Date().toISOString().slice(0, 10)}">
+                        </div>
+                        <div class="form-field">
+                            <label for="student-contact">Contact Phone (Format: 923...)</label>
+                            <input type="text" id="student-contact" placeholder="Contact Phone" value="${student.contact || ''}">
+                        </div>
+                        <div class="form-field full-width">
+                            <label for="student-address">Full Address</label>
+                            <input type="text" id="student-address" placeholder="Full Address" value="${student.address || ''}">
+                        </div>
+                        <div class="form-field">
+                            <label for="student-admission-fee">Admission Fee (Rs) *</label>
+                            <input type="number" id="student-admission-fee" placeholder="Admission Fee" value="${student.admissionFee || ''}" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="student-admission-fee-status">Admission Fee Status *</label>
+                            <select id="student-admission-fee-status" required>
+                                <option value="Paid" ${student.admissionFeeStatus === 'Paid' ? 'selected' : ''}>Paid</option>
+                                <option value="Unpaid" ${student.admissionFeeStatus === 'Unpaid' ? 'selected' : ''}>Unpaid</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="student-monthly-fee">Monthly Fee (Rs) *</label>
+                            <input type="number" id="student-monthly-fee" placeholder="Monthly Fee" value="${student.monthlyFee || ''}" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                         <button type="submit" class="btn btn-primary">Save Student</button>
+                    </div>
+                </form>
+            </div>
+        </div>`;
+    modalContainer.innerHTML = modalHtml;
+    const modal = document.getElementById('student-modal');
+    modal.style.display = 'block';
+    document.querySelector('.close-button').addEventListener('click', () => modal.style.display = 'none');
+    document.getElementById('student-form').addEventListener('submit', saveStudent);
+
+    document.getElementById('student-image').addEventListener('change', function(){
+        const [file] = this.files;
+        if (file) {
+            document.getElementById('profile-pic-preview').src = URL.createObjectURL(file);
+        }
+    });
+
+    document.getElementById('student-class').addEventListener('change', (e) => {
+        const selectedClass = e.target.value;
+        if (selectedClass && !document.getElementById('student-index').value) { // Only auto-generate for new students
+            const studentsInClass = (db.students || []).filter(s => s.class === selectedClass);
+            const lastRoll = studentsInClass.reduce((max, s) => {
+                const rollParts = s.roll.split('-');
+                const rollNum = parseInt(rollParts[rollParts.length - 1]);
+                return rollNum > max ? rollNum : max;
+            }, 0);
+            const newRoll = `NMS-${selectedClass}-${lastRoll + 1}`;
+            document.getElementById('student-roll').value = newRoll;
+        }
+    });
+}
+
+function saveStudent(e) {
+    e.preventDefault();
+    const index = document.getElementById('student-index').value;
+    const imageInput = document.getElementById('student-image');
+    const imageFile = imageInput.files[0];
+
+    const studentData = {
+        name: document.getElementById('student-name').value,
+        class: document.getElementById('student-class').value,
+        roll: document.getElementById('student-roll').value,
+        father: document.getElementById('student-father').value,
+        contact: document.getElementById('student-contact').value,
+        address: document.getElementById('student-address').value,
+        admissionDate: document.getElementById('student-admission-date').value,
+        admissionFee: document.getElementById('student-admission-fee').value,
+        admissionFeeStatus: document.getElementById('student-admission-fee-status').value,
+        monthlyFee: document.getElementById('student-monthly-fee').value,
+        image: (index !== "" && db.students[index]) ? db.students[index].image : ''
+    };
+
+    const processAndSave = () => {
+        if (index === "") {
+            if (!db.students) db.students = [];
+            db.students.push(studentData);
+        } else {
+            db.students[index] = studentData;
+        }
+        saveData();
+        document.getElementById('student-modal').style.display = 'none';
+    };
+
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            studentData.image = e.target.result;
+            processAndSave();
+        };
+        reader.readAsDataURL(imageFile);
+    } else {
+        processAndSave();
+    }
+}
+
+function openStudentViewModal(index) {
+    const student = db.students[index];
+    const modalContainer = document.getElementById('modal-container');
+    const modalHtml = `
+        <div class="modal" id="student-view-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-user-graduate"></i> Student Details</h3>
+                    <span class="close-button">&times;</span>
+                </div>
+                <div class="student-view-content">
+                    <div class="student-view-profile">
+                        <img src="${student.image || 'https://via.placeholder.com/150'}" alt="Student Photo">
+                        <h3>${student.name}</h3>
+                        <p>Class: ${student.class} | Roll No: ${student.roll}</p>
+                    </div>
+                    <div class="student-view-details">
+                        <div class="detail-item"><span>Father's Name:</span> ${student.father}</div>
+                        <div class="detail-item"><span>Contact:</span> ${student.contact}</div>
+                        <div class="detail-item"><span>Address:</span> ${student.address}</div>
+                        <div class="detail-item"><span>Admission Date:</span> ${student.admissionDate}</div>
+                        <div class="detail-item"><span>Admission Fee:</span> Rs. ${student.admissionFee} (${student.admissionFeeStatus})</div>
+                        <div class="detail-item"><span>Monthly Fee:</span> Rs. ${student.monthlyFee}</div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    modalContainer.innerHTML = modalHtml;
+    const modal = document.getElementById('student-view-modal');
+    modal.style.display = 'block';
+    document.querySelector('#student-view-modal .close-button').addEventListener('click', () => modal.style.display = 'none');
+}
+
+        function deleteStudent(index) {
+            if (confirm('Are you sure you want to delete this student?')) {
+                db.students.splice(index, 1);
+                saveData();
             }
-            html += '</tbody></table>';
-            studentsContent.innerHTML = html;
+        }
+
+        function openIdCardModal(index) {
+            const student = db.students[index];
+            const modalContainer = document.getElementById('modal-container');
+            const modalHtml = `
+                <div class="modal" id="id-card-modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <div id="id-card">
+                            <div class="id-card-header">
+                                <img src="/Logo.png" alt="School Logo" class="id-logo">
+                                <h2>NATIONAL MODEL SCHOOL</h2>
+                                <span>Student Identity Card</span>
+                            </div>
+                            <div class="id-card-main">
+                                <img src="${student.image || ''}" alt="Student" class="student-photo">
+                                <div class="id-card-info">
+                                    <div class="info-field">
+                                        <span class="field-label">Name</span>
+                                        <span class="field-value">${student.name}</span>
+                                    </div>
+                                    <div class="info-field">
+                                        <span class="field-label">Class</span>
+                                        <span class="field-value">${student.class}</span>
+                                    </div>
+                                    <div class="info-field">
+                                        <span class="field-label">Roll No.</span>
+                                        <span class="field-value">${student.roll}</span>
+                                    </div>
+                                     <div class="info-field">
+                                        <span class="field-label">Father's Name</span>
+                                        <span class="field-value">${student.father}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="id-card-footer">
+                                <p><strong>Address:</strong> ${student.address}</p>
+                                <p><strong>Contact:</strong> ${student.contact}</p>
+                            </div>
+                        </div>
+                        <button id="print-id-card" class="btn btn-primary">Print</button>
+                    </div>
+                </div>`;
+            modalContainer.innerHTML = modalHtml;
+            const modal = document.getElementById('id-card-modal');
+            modal.style.display = 'block';
+            document.querySelector('#id-card-modal .close-button').addEventListener('click', () => modal.style.display = 'none');
+            document.getElementById('print-id-card').addEventListener('click', () => printIdCard());
+        }
+
+        function printIdCard() {
+            const printContent = document.getElementById('id-card').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`<html><head><title>Print ID Card</title><link rel="stylesheet" href="/style.css"></head><body>${printContent}</body></html>`);
+            printWindow.document.close();
+            printWindow.print();
         }
 
         function renderTeachers() {
-            const teachersContent = document.getElementById('teachers-content');
-            let html = '<table><thead><tr><th>Image</th><th>Name</th><th>Subject</th><th>Contact</th><th>Address</th></tr></thead><tbody>';
-            for (const teacher of db.teachers) {
-                 const imageSrc = teacher.image ? `<img src="${teacher.image}" alt="${teacher.name}" class="teacher-image">` : 'No Image';
-                html += `<tr><td>${imageSrc}</td><td>${teacher.name}</td><td>${teacher.subject}</td><td>${teacher.contact}</td><td>${teacher.address}</td></tr>`;
+            const teachersContent = document.getElementById('teachers');
+            let tableHtml = `
+                <div class="section-header">
+                    <h2>Teachers</h2>
+                    <button id="add-teacher-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Teacher</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Subject</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+
+            for (const [index, teacher] of (db.teachers || []).entries()) {
+                const imageSrc = teacher.image ? `<img src="${teacher.image}" alt="${teacher.name}" class="table-image">` : 'No Image';
+                tableHtml += `
+                    <tr>
+                        <td>${imageSrc}</td>
+                        <td>${teacher.name}</td>
+                        <td>${teacher.subject}</td>
+                        <td>${teacher.contact}</td>
+                        <td>${teacher.address}</td>
+                        <td>
+                            <button class="btn btn-sm btn-info teacher-id-card-btn" data-index="${index}"><i class="fas fa-id-card"></i></button>
+                            <button class="btn btn-sm btn-warning edit-teacher-btn" data-index="${index}"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger delete-teacher-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>`;
             }
-            html += '</tbody></table>';
-            teachersContent.innerHTML = html;
+
+            tableHtml += '</tbody></table>';
+            teachersContent.innerHTML = tableHtml;
+
+            document.getElementById('add-teacher-btn').addEventListener('click', () => openTeacherModal());
+            document.querySelectorAll('.edit-teacher-btn').forEach(btn => btn.addEventListener('click', (e) => openTeacherModal(e.currentTarget.dataset.index)));
+            document.querySelectorAll('.delete-teacher-btn').forEach(btn => btn.addEventListener('click', (e) => deleteTeacher(e.currentTarget.dataset.index)));
+            document.querySelectorAll('.teacher-id-card-btn').forEach(btn => btn.addEventListener('click', (e) => openTeacherIdCardModal(e.currentTarget.dataset.index)));
+        }
+
+        function openTeacherModal(index) {
+            const modalContainer = document.getElementById('modal-container');
+            const teacher = index !== undefined ? db.teachers[index] : {};
+            const modalHtml = `
+                <div class="modal" id="teacher-modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h3>${index !== undefined ? 'Edit' : 'Add'} Teacher</h3>
+                        <form id="teacher-form">
+                            <input type="hidden" id="teacher-index" value="${index || ''}">
+                            <div class="form-grid">
+                                <input type="text" id="teacher-name" placeholder="Name" value="${teacher.name || ''}" required>
+                                <input type="text" id="teacher-subject" placeholder="Subject" value="${teacher.subject || ''}" required>
+                                <input type="text" id="teacher-contact" placeholder="Contact Number" value="${teacher.contact || ''}" required>
+                                <input type="text" id="teacher-address" placeholder="Address" value="${teacher.address || ''}" required>
+                                <input type="file" id="teacher-image" accept="image/*">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>`;
+            modalContainer.innerHTML = modalHtml;
+            const modal = document.getElementById('teacher-modal');
+            modal.style.display = 'block';
+            document.querySelector('#teacher-modal .close-button').addEventListener('click', () => modal.style.display = 'none');
+            document.getElementById('teacher-form').addEventListener('submit', saveTeacher);
+        }
+
+        function saveTeacher(e) {
+            e.preventDefault();
+            const index = document.getElementById('teacher-index').value;
+            const imageInput = document.getElementById('teacher-image');
+            const imageFile = imageInput.files[0];
+
+            const teacherData = {
+                name: document.getElementById('teacher-name').value,
+                subject: document.getElementById('teacher-subject').value,
+                contact: document.getElementById('teacher-contact').value,
+                address: document.getElementById('teacher-address').value,
+                image: (index && db.teachers[index]) ? db.teachers[index].image : ''
+            };
+
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    teacherData.image = e.target.result;
+                    if (index) {
+                        db.teachers[index] = teacherData;
+                    } else {
+                        if (!db.teachers) db.teachers = [];
+                        db.teachers.push(teacherData);
+                    }
+                    saveData();
+                    const modal = document.getElementById('teacher-modal');
+                    if(modal) modal.style.display = 'none';
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                if (index) {
+                    db.teachers[index] = teacherData;
+                } else {
+                    if (!db.teachers) db.teachers = [];
+                    db.teachers.push(teacherData);
+                }
+                saveData();
+                const modal = document.getElementById('teacher-modal');
+                if(modal) modal.style.display = 'none';
+            }
+        }
+
+        function deleteTeacher(index) {
+            if (confirm('Are you sure you want to delete this teacher?')) {
+                db.teachers.splice(index, 1);
+                saveData();
+            }
+        }
+
+        function openTeacherIdCardModal(index) {
+            const teacher = db.teachers[index];
+            const modalContainer = document.getElementById('modal-container');
+            const modalHtml = `
+                <div class="modal" id="teacher-id-card-modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <div id="teacher-id-card">
+                             <div class="id-card-header">
+                                <img src="/Logo.png" alt="School Logo" class="id-logo">
+                                <h2>NATIONAL MODEL SCHOOL</h2>
+                                <span>Teacher Identity Card</span>
+                            </div>
+                            <div class="id-card-main">
+                                <img src="${teacher.image || ''}" alt="Teacher" class="student-photo">
+                                <div class="id-card-info">
+                                    <div class="info-field">
+                                        <span class="field-label">Name</span>
+                                        <span class="field-value">${teacher.name}</span>
+                                    </div>
+                                    <div class="info-field">
+                                        <span class="field-label">Subject</span>
+                                        <span class="field-value">${teacher.subject}</span>
+                                    </div>
+                                    <div class="info-field">
+                                        <span class="field-label">Contact</span>
+                                        <span class="field-value">${teacher.contact}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="id-card-footer">
+                                <p><strong>Address:</strong> ${teacher.address}</p>
+                            </div>
+                        </div>
+                        <button id="print-teacher-id-card" class="btn btn-primary">Print</button>
+                    </div>
+                </div>`;
+            modalContainer.innerHTML = modalHtml;
+            const modal = document.getElementById('teacher-id-card-modal');
+            modal.style.display = 'block';
+            document.querySelector('#teacher-id-card-modal .close-button').addEventListener('click', () => modal.style.display = 'none');
+            document.getElementById('print-teacher-id-card').addEventListener('click', () => printTeacherIdCard());
+        }
+
+        function printTeacherIdCard() {
+            const printContent = document.getElementById('teacher-id-card').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`<html><head><title>Print ID Card</title><link rel="stylesheet" href="/style.css"></head><body>${printContent}</body></html>`);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        function renderAccounts() {
+            const accountsContent = document.getElementById('accounts');
+            accountsContent.innerHTML = `
+                <div class="tabs">
+                    <button class="tablink active" onclick="openTab(event, 'fees')">Fee Management</button>
+                    <button class="tablink" onclick="openTab(event, 'expenses')">Expense Tracking</button>
+                    <button class="tablink" onclick="openTab(event, 'salaries')">Salary Management</button>
+                    <button class="tablink" onclick="openTab(event, 'balance')">Balance Sheet</button>
+                </div>
+
+                <div id="fees" class="tabcontent"></div>
+                <div id="expenses" class="tabcontent" style="display:none"></div>
+                <div id="salaries" class="tabcontent" style="display:none"></div>
+                <div id="balance" class="tabcontent" style="display:none"></div>
+            `;
+            renderFees();
+            renderExpenses();
+            renderSalaries();
+            renderBalanceSheet();
+            document.querySelector('.tablink.active').click();
         }
 
         function renderFees() {
-            const feesContent = document.getElementById('fees-content');
-            let html = '<table><thead><tr><th>Student Roll No.</th><th>Amount</th><th>Date</th></tr></thead><tbody>';
-            for (const fee of db.fees) {
-                html += `<tr><td>${fee.roll}</td><td>${fee.amount}</td><td>${fee.date}</td></tr>`;
+            const feesContent = document.getElementById('fees');
+            let tableHtml = `
+                <div class="section-header"><h3>Fee Management</h3></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Father's Name</th>
+                            <th>Class</th>
+                            <th>Roll No.</th>
+                            <th>Fee Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+
+            for (const [index, student] of (db.students || []).entries()) {
+                const feeRecord = (db.fees || []).find(f => f.roll === student.roll);
+                const feeStatus = feeRecord ? `<span class="paid-indicator">Paid (Rs. ${feeRecord.amount})</span>` : '<span class="unpaid-indicator">Unpaid</span>';
+                const actionButton = feeRecord ? '' : `<button class="btn btn-sm btn-success collect-fee-btn" data-index="${index}">Collect Fee</button>`;
+                
+                tableHtml += `
+                    <tr>
+                        <td>${student.name}</td>
+                        <td>${student.father}</td>
+                        <td>${student.class}</td>
+                        <td>${student.roll}</td>
+                        <td>${feeStatus}</td>
+                        <td>${actionButton}</td>
+                    </tr>`;
             }
-            html += '</tbody></table>';
-            feesContent.innerHTML = html;
+
+            tableHtml += '</tbody></table>';
+            feesContent.innerHTML = tableHtml;
+
+            document.querySelectorAll('.collect-fee-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    openFeeModal(e.currentTarget.dataset.index);
+                });
+            });
+        }
+
+        function openFeeModal(studentIndex) {
+            const student = db.students[studentIndex];
+            const modalContainer = document.getElementById('modal-container');
+            const modalHtml = `
+                <div class="modal" id="fee-modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h3>Collect Fee from ${student.name}</h3>
+                        <form id="fee-form">
+                            <input type="hidden" id="fee-student-roll" value="${student.roll}">
+                            <div class="form-grid">
+                                <input type="number" id="fee-amount" placeholder="Amount" required>
+                                <input type="date" id="fee-date" value="${new Date().toISOString().slice(0, 10)}" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Collect</button>
+                        </form>
+                    </div>
+                </div>`;
+            modalContainer.innerHTML = modalHtml;
+            const modal = document.getElementById('fee-modal');
+            modal.style.display = 'block';
+            document.querySelector('#fee-modal .close-button').addEventListener('click', () => modal.style.display = 'none');
+            document.getElementById('fee-form').addEventListener('submit', collectFee);
+        }
+
+        function collectFee(e) {
+            e.preventDefault();
+            const newFee = {
+                roll: document.getElementById('fee-student-roll').value,
+                amount: parseFloat(document.getElementById('fee-amount').value),
+                date: document.getElementById('fee-date').value
+            };
+            if (!db.fees) db.fees = [];
+            db.fees.push(newFee);
+            saveData();
+            document.getElementById('fee-modal').style.display = 'none';
         }
 
         function renderExpenses() {
-            const expensesContent = document.getElementById('expenses-content');
-            let html = '<table><thead><tr><th>Description</th><th>Amount</th><th>Date</th></tr></thead><tbody>';
-            for (const expense of db.expenditures) {
-                html += `<tr><td>${expense.description}</td><td>${expense.amount}</td><td>${expense.date}</td></tr>`;
-            }
-            html += '</tbody></table>';
-            expensesContent.innerHTML = html;
-        }
+    const expensesContent = document.getElementById('expenses');
+    let tableHtml = `
+        <div class="section-header">
+            <h3>Expense Tracking</h3>
+            <button id="add-expense-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Expense</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>`;
+    for (const [index, expense] of (db.expenditures || []).entries()) {
+        tableHtml += `
+            <tr>
+                <td>${expense.description}</td>
+                <td>${expense.amount}</td>
+                <td>${expense.date}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning edit-expense-btn" data-index="${index}"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger delete-expense-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>`;
+    }
+    tableHtml += '</tbody></table>';
+    expensesContent.innerHTML = tableHtml;
 
-        function renderSalaries() {
-            const salariesContent = document.getElementById('salaries-content');
-            let html = '<table><thead><tr><th>Teacher ID</th><th>Amount</th><th>Date</th></tr></thead><tbody>';
-            for (const salary of db.salaries) {
-                html += `<tr><td>${salary.teacherId}</td><td>${salary.amount}</td><td>${salary.date}</td></tr>`;
-            }
-            html += '</tbody></table>';
-            salariesContent.innerHTML = html;
-        }
+    document.getElementById('add-expense-btn').addEventListener('click', () => openExpenseModal());
+    document.querySelectorAll('.edit-expense-btn').forEach(btn => btn.addEventListener('click', (e) => openExpenseModal(e.currentTarget.dataset.index)));
+    document.querySelectorAll('.delete-expense-btn').forEach(btn => btn.addEventListener('click', (e) => deleteExpense(e.currentTarget.dataset.index)));
+}
+
+function openExpenseModal(index) {
+    const expense = index !== undefined ? db.expenditures[index] : {};
+    const modalContainer = document.getElementById('modal-container');
+    const modalHtml = `
+        <div class="modal" id="expense-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>${index !== undefined ? 'Edit' : 'Add'} Expense</h3>
+                    <span class="close-button">&times;</span>
+                </div>
+                <form id="expense-form" style="padding: 20px;">
+                    <input type="hidden" id="expense-index" value="${index || ''}">
+                    <div class="form-grid">
+                        <input type="text" id="expense-description" placeholder="Description" value="${expense.description || ''}" required>
+                        <input type="number" id="expense-amount" placeholder="Amount" value="${expense.amount || ''}" required>
+                        <input type="date" id="expense-date" value="${expense.date || new Date().toISOString().slice(0, 10)}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>`;
+    modalContainer.innerHTML = modalHtml;
+    const modal = document.getElementById('expense-modal');
+    modal.style.display = 'block';
+    document.querySelector('#expense-modal .close-button').addEventListener('click', () => modal.style.display = 'none');
+    document.getElementById('expense-form').addEventListener('submit', saveExpense);
+}
+
+function saveExpense(e) {
+    e.preventDefault();
+    const index = document.getElementById('expense-index').value;
+    const expenseData = {
+        description: document.getElementById('expense-description').value,
+        amount: parseFloat(document.getElementById('expense-amount').value),
+        date: document.getElementById('expense-date').value
+    };
+    if (index) {
+        db.expenditures[index] = expenseData;
+    } else {
+        if (!db.expenditures) db.expenditures = [];
+        db.expenditures.push(expenseData);
+    }
+    saveData();
+    document.getElementById('expense-modal').style.display = 'none';
+}
+
+function deleteExpense(index) {
+    if (confirm('Are you sure you want to delete this expense?')) {
+        db.expenditures.splice(index, 1);
+        saveData();
+    }
+}
+
+function renderSalaries() {
+    const salariesContent = document.getElementById('salaries');
+    let tableHtml = `
+        <div class="section-header">
+            <h3>Salary Management</h3>
+            <button id="add-salary-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Pay Salary</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Teacher Name</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>`;
+    for (const [index, salary] of (db.salaries || []).entries()) {
+        const teacher = (db.teachers || []).find(t => t.id === salary.teacherId) || {name: 'Unknown'} ;
+        tableHtml += `
+            <tr>
+                <td>${teacher.name}</td>
+                <td>${salary.amount}</td>
+                <td>${salary.date}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning edit-salary-btn" data-index="${index}"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger delete-salary-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>`;
+    }
+    tableHtml += '</tbody></table>';
+    salariesContent.innerHTML = tableHtml;
+
+    document.getElementById('add-salary-btn').addEventListener('click', () => openSalaryModal());
+    document.querySelectorAll('.edit-salary-btn').forEach(btn => btn.addEventListener('click', (e) => openSalaryModal(e.currentTarget.dataset.index)));
+    document.querySelectorAll('.delete-salary-btn').forEach(btn => btn.addEventListener('click', (e) => deleteSalary(e.currentTarget.dataset.index)));
+}
+
+function openSalaryModal(index) {
+    const salary = index !== undefined ? db.salaries[index] : {};
+    const modalContainer = document.getElementById('modal-container');
+    let teacherOptions = (db.teachers || []).map((teacher, i) => `<option value="${teacher.id || i}" ${ (salary.teacherId == (teacher.id || i)) ? 'selected' : ''}>${teacher.name}</option>`).join('');
+    const modalHtml = `
+        <div class="modal" id="salary-modal">
+            <div class="modal-content">
+                 <div class="modal-header">
+                    <h3>${index !== undefined ? 'Edit' : 'Pay'} Salary</h3>
+                    <span class="close-button">&times;</span>
+                </div>
+                <form id="salary-form" style="padding: 20px;">
+                    <input type="hidden" id="salary-index" value="${index || ''}">
+                    <div class="form-grid">
+                        <select id="salary-teacher-id" required>${teacherOptions}</select>
+                        <input type="number" id="salary-amount" placeholder="Amount" value="${salary.amount || ''}" required>
+                        <input type="date" id="salary-date" value="${salary.date || new Date().toISOString().slice(0, 10)}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>`;
+    modalContainer.innerHTML = modalHtml;
+    const modal = document.getElementById('salary-modal');
+    modal.style.display = 'block';
+    document.querySelector('#salary-modal .close-button').addEventListener('click', () => modal.style.display = 'none');
+    document.getElementById('salary-form').addEventListener('submit', saveSalary);
+}
+
+function saveSalary(e) {
+    e.preventDefault();
+    const index = document.getElementById('salary-index').value;
+    const salaryData = {
+        teacherId: document.getElementById('salary-teacher-id').value,
+        amount: parseFloat(document.getElementById('salary-amount').value),
+        date: document.getElementById('salary-date').value
+    };
+    if (index) {
+        db.salaries[index] = salaryData;
+    } else {
+        if (!db.salaries) db.salaries = [];
+        db.salaries.push(salaryData);
+    }
+    saveData();
+    document.getElementById('salary-modal').style.display = 'none';
+}
+
+function deleteSalary(index) {
+    if (confirm('Are you sure you want to delete this salary payment?')) {
+        db.salaries.splice(index, 1);
+        saveData();
+    }
+}
 
         function renderBalanceSheet() {
-            const balanceSheetContainer = document.getElementById('balance-sheet-container');
-            const totalIncome = db.fees.reduce((sum, fee) => sum + fee.amount, 0);
-            const totalExpenditures = db.expenditures.reduce((sum, exp) => sum + exp.amount, 0);
-            const totalSalaries = db.salaries.reduce((sum, sal) => sum + sal.amount, 0);
+            const balanceSheetContainer = document.getElementById('balance');
+            const totalIncome = (db.fees || []).reduce((sum, fee) => sum + fee.amount, 0);
+            const totalExpenditures = (db.expenditures || []).reduce((sum, exp) => sum + exp.amount, 0);
+            const totalSalaries = (db.salaries || []).reduce((sum, sal) => sum + sal.amount, 0);
             const totalExpenses = totalExpenditures + totalSalaries;
             const netBalance = totalIncome - totalExpenses;
 
-            let incomeRows = '';
-            db.fees.forEach(fee => {
-                const student = db.students.find(s => s.roll === fee.roll);
-                const studentName = student ? student.name : 'N/A';
-                incomeRows += `<tr><td>Fee from ${studentName} (Roll: ${fee.roll})</td><td>${fee.date}</td><td>Rs. ${fee.amount}</td></tr>`;
-            });
-
-            let expenseRows = '';
-            db.expenditures.forEach(exp => {
-                expenseRows += `<tr><td>${exp.description}</td><td>${exp.date}</td><td>Rs. ${exp.amount}</td></tr>`;
-            });
-            db.salaries.forEach(sal => {
-                const teacher = db.teachers.find(t => t.name === sal.teacherId); // Assuming teacherId is the name for now
-                const teacherName = teacher ? teacher.name : sal.teacherId;
-                expenseRows += `<tr><td>Salary to: ${teacherName}</td><td>${sal.date}</td><td>Rs. ${sal.amount}</td></tr>`;
-            });
-
             balanceSheetContainer.innerHTML = `
-                <div id="balance-sheet-report">
-                    <div class="balance-sheet-header">
-                         <img src="${db.settings.logo || '/Logo.png'}" alt="School Logo">
-                         <div>
-                             <h4>${db.settings.name}</h4>
-                             <h5>Balance Sheet</h5>
-                         </div>
-                    </div>
-                    
-                    <h4>Income</h4>
-                    <table class="balance-sheet-table">
-                        <thead><tr><th>Details</th><th>Date</th><th>Amount</th></tr></thead>
-                        <tbody>${incomeRows}</tbody>
-                    </table>
-
-                    <h4>Expenses</h4>
-                    <table class="balance-sheet-table">
-                        <thead><tr><th>Details</th><th>Date</th><th>Amount</th></tr></thead>
-                        <tbody>${expenseRows}</tbody>
-                    </table>
-
+                <h3>Balance Sheet</h3>
+                <div class="balance-sheet">
                     <div class="balance-sheet-summary">
                         <div class="summary-row"><strong>Total Income:</strong> <span>Rs. ${totalIncome}</span></div>
                         <div class="summary-row"><strong>Total Expenses:</strong> <span>Rs. ${totalExpenses}</span></div>
@@ -442,42 +925,58 @@
             `;
         }
 
+        function renderAttendance() {
+            const attendanceContent = document.getElementById('attendance');
+            const today = new Date().toISOString().slice(0, 10);
+            let content = `
+                <div class="section-header">
+                    <h2>Attendance</h2>
+                    <div class="attendance-filters">
+                        <input type="date" id="attendance-date" value="${today}">
+                        <select id="attendance-class-filter"></select>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Roll No.</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-table-body"></tbody>
+                </table>`;
+            attendanceContent.innerHTML = content;
+            populateClassFilter();
+            renderAttendanceTable();
 
-        function renderResults() {
-            const resultsContent = document.getElementById('results-content');
-            let html = '<h3>Saved Result Cards</h3><table><thead><tr><th>Student Name</th><th>Father\'s Name</th><th>Roll No.</th><th>Exam Name</th><th>Action</th></tr></thead><tbody>';
-            for (const [index, result] of db.results.entries()) {
-                const student = db.students.find(s => s.roll === result.roll);
-                const studentName = student ? student.name : 'N/A';
-                const fatherName = student ? student.father : 'N/A';
-                html += `<tr><td>${studentName}</td><td>${fatherName}</td><td>${result.roll}</td><td>${result.examName}</td><td><button class="view-result-btn" data-index="${index}">View</button></td></tr>`;
-            }
-            html += '</tbody></table>';
-            resultsContent.innerHTML = html;
+            document.getElementById('attendance-date').addEventListener('change', renderAttendanceTable);
+            document.getElementById('attendance-class-filter').addEventListener('change', renderAttendanceTable);
+            document.getElementById('attendance-table-body').addEventListener('click', markAttendance);
         }
         
         function populateClassFilter() {
             const classFilter = document.getElementById('attendance-class-filter');
-            const classes = ['all', ...new Set(db.students.map(s => s.class))];
+            const classes = ['all', ...new Set((db.students || []).map(s => s.class))];
             let options = '';
             for (const c of classes) {
                 options += `<option value="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</option>`;
             }
             classFilter.innerHTML = options;
         }
-
-        function renderAttendance() {
-            const attendanceContent = document.getElementById('attendance-content');
+        
+        function renderAttendanceTable() {
+            const attendanceTableBody = document.getElementById('attendance-table-body');
             const date = document.getElementById('attendance-date').value;
             const selectedClass = document.getElementById('attendance-class-filter').value;
 
-            let html = '<table><thead><tr><th>Student Name</th><th>Roll No.</th><th>Status</th><th>Action</th></tr></thead><tbody>';
-            
-            if (!db.attendance.students[date]) {
-                db.attendance.students[date] = {};
-            }
+            if (!db.attendance) db.attendance = { students: {} };
+            if (!db.attendance.students) db.attendance.students = {};
+            if (!db.attendance.students[date]) db.attendance.students[date] = {};
 
-            for (const student of db.students) {
+            let html = '';
+            for (const student of (db.students || [])) {
                 if (selectedClass === 'all' || student.class === selectedClass) {
                     const attendanceStatus = db.attendance.students[date][student.roll] || 'Not Marked';
                     let statusDisplay;
@@ -498,494 +997,191 @@
                             <td>${student.roll}</td>
                             <td>${statusDisplay}</td>
                             <td>
-                                <button class="present-btn" data-roll="${student.roll}" data-date="${date}">Present</button>
-                                <button class="absent-btn" data-roll="${student.roll}" data-date="${date}">Absent</button>
+                                <button class="btn btn-sm btn-success present-btn" data-roll="${student.roll}" data-date="${date}">Present</button>
+                                <button class="btn btn-sm btn-danger absent-btn" data-roll="${student.roll}" data-date="${date}">Absent</button>
                             </td>
                         </tr>
                     `;
                 }
             }
-            html += '</tbody></table>';
-            attendanceContent.innerHTML = html;
+            attendanceTableBody.innerHTML = html;
         }
 
-        document.getElementById('add-student-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const imageInput = document.getElementById('student-image');
-            const imageFile = imageInput.files[0];
-            const newStudent = {
-                name: document.getElementById('student-name').value,
-                class: document.getElementById('student-class').value,
-                roll: document.getElementById('student-roll').value,
-                father: document.getElementById('student-father').value,
-                contact: document.getElementById('student-contact').value,
-                address: document.getElementById('student-address').value,
-                image: ''
-            };
-
-            if (imageFile) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    newStudent.image = e.target.result;
-                    db.students.push(newStudent);
-                    saveData();
-                    renderStudents();
-                    renderDashboard();
-                    populateClassFilter();
-                    renderAttendance();
-                };
-                reader.readAsDataURL(imageFile);
-            } else {
-                db.students.push(newStudent);
-                saveData();
-                renderStudents();
-                renderDashboard();
-                populateClassFilter();
-                renderAttendance();
-            }
-
-            this.reset();
-        });
-
-        document.getElementById('add-teacher-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const imageInput = document.getElementById('teacher-image');
-            const imageFile = imageInput.files[0];
-            const newTeacher = {
-                name: document.getElementById('teacher-name').value,
-                subject: document.getElementById('teacher-subject').value,
-                contact: document.getElementById('teacher-contact').value,
-                address: document.getElementById('teacher-address').value,
-                image: ''
-            };
-
-            if(imageFile){
-                const reader = new FileReader();
-                reader.onload = function(e){
-                    newTeacher.image = e.target.result;
-                    db.teachers.push(newTeacher);
-                    saveData();
-                    renderTeachers();
-                    renderDashboard();
-                }
-                reader.readAsDataURL(imageFile);
-            } else {
-                 db.teachers.push(newTeacher);
-                saveData();
-                renderTeachers();
-                renderDashboard();
-            }
-           
-            this.reset();
-        });
-
-        document.getElementById('add-fee-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const newFee = {
-                roll: document.getElementById('fee-student-roll').value,
-                amount: parseFloat(document.getElementById('fee-amount').value),
-                date: document.getElementById('fee-date').value,
-            };
-            db.fees.push(newFee);
-            saveData();
-            renderFees();
-            renderDashboard();
-            renderBalanceSheet();
-            this.reset();
-        });
-
-        document.getElementById('add-expense-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const newExpense = {
-                description: document.getElementById('expense-description').value,
-                amount: parseFloat(document.getElementById('expense-amount').value),
-                date: document.getElementById('expense-date').value,
-            };
-            db.expenditures.push(newExpense);
-            saveData();
-            renderExpenses();
-            renderDashboard();
-            renderBalanceSheet();
-            this.reset();
-        });
-
-        document.getElementById('add-salary-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const newSalary = {
-                teacherId: document.getElementById('salary-teacher-id').value,
-                amount: parseFloat(document.getElementById('salary-amount').value),
-                date: document.getElementById('salary-date').value,
-            };
-            db.salaries.push(newSalary);
-            saveData();
-            renderSalaries();
-            renderDashboard();
-            renderBalanceSheet();
-            this.reset();
-        });
-
-        document.getElementById('add-result-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const roll = document.getElementById('result-student-roll').value;
-            const studentName = document.getElementById('result-student-name').value;
-            const fatherName = document.getElementById('result-student-father').value;
-
-            let student = db.students.find(s => s.roll === roll);
-
-            if (student) {
-                // Student exists, update their info in case it was changed in the form
-                student.name = studentName;
-                student.father = fatherName;
-            } else {
-                // Student does not exist, create a new one
-                student = {
-                    name: studentName,
-                    father: fatherName,
-                    roll: roll,
-                    class: 'N/A', // Assign a default class or consider adding a class field to the form
-                    contact: 'N/A',
-                    address: 'N/A',
-                    image: ''
-                };
-                db.students.push(student);
-            }
-
-            const newResult = {
-                roll: roll,
-                examName: document.getElementById('result-exam-name').value,
-                marks: {
-                    english: parseFloat(document.getElementById('result-marks-english').value) || 0,
-                    math: parseFloat(document.getElementById('result-marks-math').value) || 0,
-                    science: parseFloat(document.getElementById('result-marks-science').value) || 0,
-                    urdu: parseFloat(document.getElementById('result-marks-urdu').value) || 0,
-                    islamiyat: parseFloat(document.getElementById('result-marks-islamiyat').value) || 0,
-                }
-            };
-            db.results.push(newResult);
-            const newResultIndex = db.results.length - 1;
-
-            saveData();
-            renderResults();
-            renderStudents();
-            renderDashboard();
-            this.reset();
-            openResultCardModal(newResultIndex);
-        });
-
-
-        document.getElementById('result-student-roll').addEventListener('input', function() {
-            const rollNo = this.value;
-            const student = db.students.find(s => s.roll === rollNo);
-            const studentNameInput = document.getElementById('result-student-name');
-            const fatherNameInput = document.getElementById('result-student-father');
-
-            if (student) {
-                studentNameInput.value = student.name;
-                fatherNameInput.value = student.father;
-            } else {
-                studentNameInput.value = '';
-                fatherNameInput.value = '';
-            }
-        });
-
-        document.getElementById('settings-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const newName = document.getElementById('school-name').value;
-            const newAddress = document.getElementById('school-address').value;
-            const logoInput = document.getElementById('school-logo');
-            const logoFile = logoInput.files[0];
-
-            db.settings.name = newName;
-            db.settings.address = newAddress;
-
-            if (logoFile) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    db.settings.logo = e.target.result;
-                    saveData();
-                    alert('Settings saved successfully!');
-                };
-                reader.readAsDataURL(logoFile);
-            } else {
-                saveData();
-                alert('Settings saved successfully!');
-            }
-        });
-
-
-        const idCardModal = document.getElementById('id-card-modal');
-        const editStudentModal = document.getElementById('edit-student-modal');
-        const resultCardModal = document.getElementById('result-card-modal');
-        const closeButtons = document.querySelectorAll('.close-button');
-
-        closeButtons.forEach(button => {
-            button.onclick = function() {
-                idCardModal.style.display = "none";
-                editStudentModal.style.display = "none";
-                resultCardModal.style.display = "none";
-            }
-        });
-
-        window.onclick = function(event) {
-            if (event.target == idCardModal || event.target == editStudentModal || event.target == resultCardModal) {
-                idCardModal.style.display = "none";
-                editStudentModal.style.display = "none";
-                resultCardModal.style.display = "none";
-            }
-        }
-        
-        document.getElementById('attendance-date').addEventListener('change', renderAttendance);
-        document.getElementById('attendance-class-filter').addEventListener('change', renderAttendance);
-
-        document.getElementById('attendance-content').addEventListener('click', function(e) {
-            const date = document.getElementById('attendance-date').value;
-            const roll = e.target.getAttribute('data-roll');
-
-            if (e.target && e.target.classList.contains('present-btn')) {
+        function markAttendance(e) {
+            const roll = e.target.dataset.roll;
+            const date = e.target.dataset.date;
+            if (e.target.classList.contains('present-btn')) {
                 db.attendance.students[date][roll] = 'present';
                 saveData();
-                renderAttendance();
-            }
-
-            if (e.target && e.target.classList.contains('absent-btn')) {
+            } else if (e.target.classList.contains('absent-btn')) {
                 db.attendance.students[date][roll] = 'absent';
                 saveData();
-                renderAttendance();
             }
-        });
-
-        document.getElementById('students-content').addEventListener('click', function(e) {
-            const studentIndex = e.target.getAttribute('data-index');
-
-            if (e.target && e.target.classList.contains('id-card-btn')) {
-                const student = db.students[studentIndex];
-                const idCardContainer = document.getElementById('id-card-container');
-
-                idCardContainer.innerHTML = `
-                <div id="id-card">
-                    <div class="id-card-header">
-                        <img src="${db.settings.logo || '/Logo.png'}" alt="School Logo">
-                        <h4>${db.settings.name}</h4>
-                    </div>
-                    <div class="id-card-body">
-                        <img src="${student.image}" alt="${student.name}" class="id-card-student-image">
-                        <div class="id-card-details">
-                            <p><strong>Name:</strong> ${student.name}</p>
-                            <p><strong>Class:</strong> ${student.class}</p>
-                            <p><strong>Roll No:</strong> ${student.roll}</p>
-                            <p><strong>Father's Name:</strong> ${student.father}</p>
-                            <p><strong>Contact:</strong> ${student.contact}</p>
-                             <p><strong>Address:</strong> ${student.address}</p>
-                        </div>
-                    </div>
-                </div>
-                `;
-                idCardModal.style.display = 'block';
-            }
-
-            if (e.target && e.target.classList.contains('edit-student-btn')) {
-                const student = db.students[studentIndex];
-                document.getElementById('edit-student-index').value = studentIndex;
-                document.getElementById('edit-student-name').value = student.name;
-                document.getElementById('edit-student-class').value = student.class;
-                document.getElementById('edit-student-roll').value = student.roll;
-                document.getElementById('edit-student-father').value = student.father;
-                document.getElementById('edit-student-contact').value = student.contact;
-                document.getElementById('edit-student-address').value = student.address;
-                editStudentModal.style.display = 'block';
-            }
-        });
-
-        function openResultCardModal(resultIndex) {
-            const result = db.results[resultIndex];
-            const student = db.students.find(s => s.roll === result.roll);
-            const resultCardContainer = document.getElementById('result-card-container');
-
-            if (!student) {
-                resultCardContainer.innerHTML = `<p>Error: Student with Roll No. ${result.roll} not found.</p>`;
-                resultCardModal.style.display = 'block';
-                return;
-            }
-
-            const totalMarks = Object.values(result.marks).reduce((sum, mark) => sum + mark, 0);
-            const percentage = (totalMarks / (Object.keys(result.marks).length * 100)) * 100;
-            let grade;
-            if (percentage >= 80) grade = 'A+';
-            else if (percentage >= 70) grade = 'A';
-            else if (percentage >= 60) grade = 'B';
-            else if (percentage >= 50) grade = 'C';
-            else if (percentage >= 40) grade = 'D';
-            else grade = 'Fail';
-
-            resultCardContainer.innerHTML = `
-                <div id="result-card">
-                    <div class="result-card-header">
-                        <img src="${db.settings.logo || '/Logo.png'}" alt="School Logo">
-                        <div>
-                            <h4>${db.settings.name}</h4>
-                            <h5>${result.examName} Result Card</h5>
-                        </div>
-                    </div>
-                    <div class="result-card-student-details">
-                        <div class="detail-row">
-                            <span class="detail-label">Student Name:</span>
-                            <span class="detail-value"><strong>${student.name}</strong></span>
-                        </div>
-                         <div class="detail-row">
-                            <span class="detail-label">Father's Name:</span>
-                            <span class="detail-value"><strong>${student.father || 'N/A'}</strong></span>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-label">Class:</span>
-                            <span class="detail-value">${student.class}</span>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-label">Roll No:</span>
-                            <span class="detail-value">${student.roll}</span>
-                        </div>
-                    </div>
-                    <table class="result-card-marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject</th>
-                                <th>Marks Obtained</th>
-                                <th>Total Marks</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>English</td><td>${result.marks.english}</td><td>100</td></tr>
-                            <tr><td>Math</td><td>${result.marks.math}</td><td>100</td></tr>
-                            <tr><td>Science</td><td>${result.marks.science}</td><td>100</td></tr>
-                             <tr><td>Urdu</td><td>${result.marks.urdu}</td><td>100</td></tr>
-                            <tr><td>Islamiyat</td><td>${result.marks.islamiyat}</td><td>100</td></tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Total</th>
-                                <th>${totalMarks}</th>
-                                <th>${Object.keys(result.marks).length * 100}</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <div class="result-card-summary">
-                        <p><strong>Percentage:</strong> ${percentage.toFixed(2)}%</p>
-                        <p><strong>Grade:</strong> ${grade}</p>
-                    </div>
-                </div>
-            `;
-            resultCardModal.style.display = 'block';
         }
 
-        document.getElementById('results-content').addEventListener('click', function(e) {
-            if (e.target && e.target.classList.contains('view-result-btn')) {
-                const resultIndex = e.target.getAttribute('data-index');
-                openResultCardModal(resultIndex);
-            }
-        });
+        function renderExamination() {
+            const examinationContent = document.getElementById('examination');
+            let content = `
+                <div class="section-header">
+                    <h2>Examination</h2>
+                </div>
+                <div class="examination-grid">
+                    <div class="form-container">
+                        <h3>Create Result Card</h3>
+                        <form id="add-result-form">
+                            <div class="form-grid">
+                                <input type="text" id="result-student-roll" placeholder="Student Roll No." required>
+                                <input type="text" id="result-exam-name" placeholder="Examination Name" required>
+                                <input type="number" id="result-marks-english" placeholder="English Marks" required>
+                                <input type="number" id="result-marks-math" placeholder="Math Marks" required>
+                                <input type="number" id="result-marks-science" placeholder="Science Marks" required>
+                                <input type="number" id="result-marks-urdu" placeholder="Urdu Marks" required>
+                                <input type="number" id="result-marks-islamiyat" placeholder="Islamiyat Marks" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Generate Result Card</button>
+                        </form>
+                    </div>
+                    <div class="table-container">
+                        <h3>Saved Result Cards</h3>
+                        <table id="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Roll No.</th>
+                                    <th>Exam Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>`;
+            examinationContent.innerHTML = content;
+            renderResultsTable();
 
-        document.getElementById('edit-student-form').addEventListener('submit', function(e) {
+            document.getElementById('add-result-form').addEventListener('submit', saveResult);
+            document.getElementById('results-table').addEventListener('click', viewResultCard);
+        }
+
+        function renderResultsTable() {
+            const resultsTableBody = document.querySelector('#results-table tbody');
+            let html = '';
+            for (const [index, result] of (db.results || []).entries()) {
+                const student = (db.students || []).find(s => s.roll === result.roll);
+                const studentName = student ? student.name : 'N/A';
+                html += `
+                    <tr>
+                        <td>${studentName}</td>
+                        <td>${result.roll}</td>
+                        <td>${result.examName}</td>
+                        <td><button class="btn btn-sm btn-info view-result-btn" data-index="${index}">View</button></td>
+                    </tr>`;
+            }
+            resultsTableBody.innerHTML = html;
+        }
+
+        function saveResult(e) {
             e.preventDefault();
-            const studentIndex = document.getElementById('edit-student-index').value;
-            const imageInput = document.getElementById('edit-student-image');
-            const imageFile = imageInput.files[0];
-
-            const updatedStudent = {
-                name: document.getElementById('edit-student-name').value,
-                class: document.getElementById('edit-student-class').value,
-                roll: document.getElementById('edit-student-roll').value,
-                father: document.getElementById('edit-student-father').value,
-                contact: document.getElementById('edit-student-contact').value,
-                address: document.getElementById('edit-student-address').value,
-                image: db.students[studentIndex].image // Keep the existing image by default
+            const newResult = {
+                roll: document.getElementById('result-student-roll').value,
+                examName: document.getElementById('result-exam-name').value,
+                marks: {
+                    english: parseFloat(document.getElementById('result-marks-english').value),
+                    math: parseFloat(document.getElementById('result-marks-math').value),
+                    science: parseFloat(document.getElementById('result-marks-science').value),
+                    urdu: parseFloat(document.getElementById('result-marks-urdu').value),
+                    islamiyat: parseFloat(document.getElementById('result-marks-islamiyat').value),
+                }
             };
-
-            if (imageFile) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    updatedStudent.image = e.target.result;
-                    db.students[studentIndex] = updatedStudent;
-                    saveData();
-                    renderStudents();
-                    editStudentModal.style.display = 'none';
-                };
-                reader.readAsDataURL(imageFile);
-            } else {
-                db.students[studentIndex] = updatedStudent;
-                saveData();
-                renderStudents();
-                editStudentModal.style.display = 'none';
-            }
-        });
-        
-        document.getElementById('print-id-card').addEventListener('click', function(){
-             const printContent = document.getElementById('id-card-container').innerHTML;
-             const printWindow = window.open('', '_blank');
-             printWindow.document.write('<html><head><title>Print ID Card</title><link rel="stylesheet" href="/style.css"></head><body>' + printContent + '</body></html>');
-             printWindow.document.close();
-             printWindow.print();
-        });
-
-        document.getElementById('print-result-card').addEventListener('click', function(){
-             const printContent = document.getElementById('result-card-container').innerHTML;
-             const printWindow = window.open('', '_blank');
-             printWindow.document.write('<html><head><title>Print Result Card</title><link rel="stylesheet" href="/style.css"></head><body>' + printContent + '</body></html>');
-             printWindow.document.close();
-             printWindow.print();
-        });
-
-        document.getElementById('print-balance-sheet').addEventListener('click', function(){
-             const printContent = document.getElementById('balance-sheet-report').innerHTML;
-             const printWindow = window.open('', '_blank');
-             printWindow.document.write('<html><head><title>Balance Sheet</title><link rel="stylesheet" href="/style.css"></head><body>' + printContent + '</body></html>');
-             printWindow.document.close();
-             printWindow.print();
-        });
-
-        function renderAll(){
-            renderDashboard();
-            renderStudents();
-            renderTeachers();
-            renderFees();
-            renderExpenses();
-            renderSalaries();
-            renderAttendance();
-            renderResults();
-            renderBalanceSheet();
+            if (!db.results) db.results = [];
+            db.results.push(newResult);
+            saveData();
+            this.reset();
         }
 
-        function initApp() {
-            
-            // Add a sample result for demonstration
-            if (db.results.length === 0) {
-                db.results.push({
-                    roll: "C5-001",
-                    examName: "Mid-Term",
-                    marks: {
-                        english: 85,
-                        math: 92,
-                        science: 78,
-                        urdu: 88,
-                        islamiyat: 95
-                    }
-                });
+        function viewResultCard(e) {
+            if (e.target.classList.contains('view-result-btn')) {
+                const index = e.target.dataset.index;
+                openResultCardModal(index);
             }
-            
-            document.getElementById('school-name').value = db.settings.name;
-            document.getElementById('school-address').value = db.settings.address;
+        }
 
-            document.getElementById('attendance-date').value = new Date().toISOString().slice(0, 10);
-            populateClassFilter();
-            applySettings();
-            renderAll();
+        function openResultCardModal(index) {
+    const result = db.results[index];
+    const student = (db.students || []).find(s => s.roll === result.roll);
+    const modalContainer = document.getElementById('modal-container');
+    let modalHtml = `<div class="modal" id="result-card-modal"><div class="modal-content"><div class="modal-header"><h3>Result Card</h3><span class="close-button">&times;</span></div>`;
+
+    if (student) {
+        const totalMarks = Object.values(result.marks).reduce((sum, mark) => sum + mark, 0);
+        const percentage = (totalMarks / (Object.keys(result.marks).length * 100)) * 100;
+        let grade;
+        if (percentage >= 80) grade = 'A+';
+        else if (percentage >= 70) grade = 'A';
+        else if (percentage >= 60) grade = 'B';
+        else if (percentage >= 50) grade = 'C';
+        else if (percentage >= 40) grade = 'D';
+        else grade = 'Fail';
+
+        modalHtml += `
+            <div class="result-card-content" id="result-card">
+                <div class="result-card-header-new">
+                    <img src="/Logo.png" alt="School Logo">
+                    <h4>NATIONAL MODEL SCHOOL</h4>
+                    <h5>${result.examName} Result Card</h5>
+                </div>
+                <div class="result-card-student-info">
+                    <div><strong>Student Name:</strong> ${student.name}</div>
+                    <div><strong>Father's Name:</strong> ${student.father || 'N/A'}</div>
+                    <div><strong>Class:</strong> ${student.class}</div>
+                    <div><strong>Roll No:</strong> ${student.roll}</div>
+                </div>
+                <table class="result-card-marks-table-new">
+                    <thead><tr><th>Subject</th><th>Marks Obtained</th><th>Total Marks</th></tr></thead>
+                    <tbody>
+                        ${Object.keys(result.marks).map(subject => `<tr><td>${subject.charAt(0).toUpperCase() + subject.slice(1)}</td><td>${result.marks[subject]}</td><td>100</td></tr>`).join('')}
+                    </tbody>
+                </table>
+                <div class="result-card-summary-new">
+                    <div><strong>Total Marks:</strong> ${totalMarks} / ${Object.keys(result.marks).length * 100}</div>
+                    <div><strong>Percentage:</strong> ${percentage.toFixed(2)}%</div>
+                    <div><strong>Grade:</strong> ${grade}</div>
+                </div>
+            </div>
+             <div class="modal-footer">
+                <button id="print-result-card" class="btn btn-primary">Print</button>
+            </div>`;
+    } else {
+        modalHtml += '<div style="padding:20px;">Student not found!</div>';
+    }
+    modalHtml += '</div></div>';
+    modalContainer.innerHTML = modalHtml;
+
+    const modal = document.getElementById('result-card-modal');
+    modal.style.display = 'block';
+    document.querySelector('#result-card-modal .close-button').addEventListener('click', () => modal.style.display = 'none');
+    if (student) {
+        document.getElementById('print-result-card').addEventListener('click', () => printResultCard());
+    }
+}
+
+        function printResultCard() {
+            const printContent = document.getElementById('result-card').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`<html><head><title>Print Result Card</title><link rel="stylesheet" href="/style.css"></head><body>${printContent}</body></html>`);
+            printWindow.document.close();
+            printWindow.print();
+        }
+        
+        window.addEventListener('hashchange', () => navigate(window.location.hash));
+        
+        function initApp() {
             const hash = window.location.hash || '#dashboard';
             navigate(hash);
-            if(hash === '#accounts'){
-                    document.querySelector('.tablink.active').click();
-            }
         }
 
-        initApp();
+        loadData().then(initApp);
+
     </script>
 </body>
 </html>
